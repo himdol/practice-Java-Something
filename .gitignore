@@ -1,0 +1,70 @@
+# 파일 제외 (파일명.확장자)
+
+# 현재 경로에 있는 파일만 제외 (다른 경로의 동일한 파일명은 추적)
+#/파일명.txt
+
+# 특정 경로안의 특정 파일 제외
+# 폴더명/파일명.txt
+
+# 특정 폴더안의 파일 전부 제외
+#폴더명/
+
+# 해당 확장자 파일 전체 제외
+#*.txt
+
+# 예외
+#!제외할 파일명.txt
+/out/production/practice-Java-Something/thread/Account.class
+/out/production/practice-Java-Something/Annotation/AnnotationMain.class
+/out/production/practice-Java-Something/company/onboarding/src/main/ApplicationCompany.class
+/out/production/practice-Java-Something/java01/designpattern/decorate/B2cOrder.class
+/out/production/practice-Java-Something/generic/sample/Box.class
+/out/production/practice-Java-Something/generic/parents/Bumo.class
+/out/production/practice-Java-Something/company/onboarding/src/CommonConstant.class
+/out/production/practice-Java-Something/thread/waitlock/Cook.class
+/out/production/practice-Java-Something/thread/waitlock/Customer.class
+/out/production/practice-Java-Something/thread/DaemonThreadMain.class
+/out/production/practice-Java-Something/company/onboarding/src/db/DAO.class
+/out/production/javasomething/company/dbConnection.xml
+/out/production/practice-Java-Something/company/dbConnection.xml
+/src/company/dbConnection.xml
+/out/production/practice-Java-Something/java01/designpattern/decorate/DecorateMain.class
+/out/production/practice-Java-Something/java01/designpattern/decorate/DefaultOrderComponent.class
+/out/production/practice-Java-Something/Annotation/ElapsedTime.class
+/out/production/practice-Java-Something/java01/designpattern/decorate/FnetOrder.class
+/out/production/practice-Java-Something/generic/sample/Fruit.class
+/out/production/practice-Java-Something/generic/sample/FruitBox.class
+/out/production/practice-Java-Something/function/FunctionMain.class
+/out/production/practice-Java-Something/generic/sample/GenericCreateMain.class
+/out/production/practice-Java-Something/generic/parents/GenericMain.class
+/out/production/practice-Java-Something/lambda/LambdaMain$1.class
+/out/production/practice-Java-Something/lambda/LambdaMain.class
+/out/production/practice-Java-Something/lambda2/LambdaMain.class
+/out/production/practice-Java-Something/lambda/LambdaMain2$1.class
+/out/production/practice-Java-Something/lambda/LambdaMain2.class
+/out/production/practice-Java-Something/lambda2/LambdaMain2.class
+/out/production/practice-Java-Something/lambda/LambdaMain3.class
+/out/production/practice-Java-Something/thread/waitlock/Main1.class
+/out/production/practice-Java-Something/company/sample/mapNullTest.class
+/out/production/practice-Java-Something/lambda/MyFunction.class
+/out/production/practice-Java-Something/lambda2/myFunctionInterface.class
+/out/production/practice-Java-Something/lambda2/MyFuntion$1.class
+/out/production/practice-Java-Something/lambda2/MyFuntion.class
+/out/production/practice-Java-Something/company/onboarding/src/resouce/OnBoarding.class
+/out/production/practice-Java-Something/company/onboarding/src/dao/onboardingdao/OnboardingDao.class
+/out/production/practice-Java-Something/java01/designpattern/decorate/OrderComponent.class
+/out/production/practice-Java-Something/java01/designpattern/decorate/OrderDecorate.class
+/out/production/practice-Java-Something/lambda/PrintFunction.class
+/out/production/practice-Java-Something/lambda2/PrintFunction.class
+/out/production/practice-Java-Something/company/onboarding/src/xmlreader/ReaderXML.class
+/out/production/javasomething/github/profile/readme.html
+/out/production/practice-Java-Something/github/profile/readme.html
+/out/production/practice-Java-Something/thread/RunnableEx.class
+/out/production/practice-Java-Something/generic/parents/Sonja.class
+/out/production/practice-Java-Something/function/SupConMain.class
+/out/production/practice-Java-Something/function2/SupConMain.class
+/out/production/practice-Java-Something/thread/SyncMain.class
+/out/production/practice-Java-Something/thread/waitlock/Table.class
+/out/production/practice-Java-Something/thread/Thread1.class
+/out/production/practice-Java-Something/thread/Thread2.class
+/out/production/practice-Java-Something/thread/ThreadMain.class
