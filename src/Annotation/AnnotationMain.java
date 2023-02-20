@@ -12,7 +12,7 @@ public class AnnotationMain {
     @Deprate :
     @Document : Java Doc,
     @Target : 타입정의
-    @g
+    @
 
      */
     test();
