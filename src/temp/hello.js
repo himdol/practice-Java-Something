@@ -1,18 +1,16 @@
+const h1 = document.querySelector("div.hello:first-child h1");
 
-function handleWindowResize() {
-  document.body.style.backgroundColor = "tomato";
+function handleClick() {
+  const currentColor = h1.style.color;
+  let newColor;
+  if (currentColor === "blue") {
+    newColor = "tomato";
+  } else {
+    newColor = "blue";
+  }
+  h1.style.color = newColor;
 }
 
-function handleWindowCopy() {
-  alert("copy");
-}
-
-function handleWindowOffline() {
-  alert("SOS no WIFI");
-}
+h1.addEventListener("click", handleClick);
 
 
-
-window.addEventListener("resize", handleWindowResize);
-window.addEventListener("copy", handleWindowCopy);
-window.addEventListener("offline", handleWindowOffline);
