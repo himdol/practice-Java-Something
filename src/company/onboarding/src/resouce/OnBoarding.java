@@ -1,5 +1,6 @@
 package company.onboarding.src.resouce;
 
+import company.onboarding.src.CommonConstant;
 import company.onboarding.src.common.ExcelUtility;
 import company.onboarding.src.dto.excel.ExcelDto;
 
@@ -15,16 +16,35 @@ public class OnBoarding {
 
 	public int takeToExcelDataAndUpdate() {
 		ExcelUtility excelUtility = new ExcelUtility();
-		String path = "C:/Users/이힘찬/Downloads/";	//파일 경로 설정
-		String filename = this.getFilename(path);	  //파일명 설정
-		List<ExcelDto> excelDtoList = excelUtility.excelReader(path, filename);
+		String path = "C:/Users/이힘찬/Downloads/";
 
-		excelDtoList.stream().forEach(System.out :: println);
+		ExcelDto excelDto = new ExcelDto();
+		excelDto.setPath(path);
+		excelDto.setFilename(this.getFilename(path));
+		excelDto.setSheetStandardNum(CommonConstant.ZERO);
+		excelDto.setRowStandardNum(2);
+		excelDto.setCellStandardNum(2);
+
+		List<ExcelDto> excelDtoList = excelUtility.excelReader(excelDto);
+
+		this.printExcelListToValue(excelDtoList);
+//	TODO - 제목 seq 번호로 다른 ROW 의 셀까지 지워주기.
+
 
 		return 0;
 	}
 
 
+	private void printExcelListToValue(List<ExcelDto> excelDtoList) {
+		excelDtoList.stream().forEach(System.out :: println);
+	}
+
+	private void removeCellWithTitleNumber(List<ExcelDto> excelDtoList) {
+
+
+
+
+	}
 
 
 

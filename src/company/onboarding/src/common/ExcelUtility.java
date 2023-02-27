@@ -27,15 +27,19 @@ public class ExcelUtility {
 		return returnString;
 	}
 
-	public List<ExcelDto> excelReader(String path, String filename) {
+	public List<ExcelDto> excelReader(ExcelDto parmExcelDto) {
+
+		final int SHEET_STANDARD_NUM = parmExcelDto.getSheetStandardNum();
+		final int ROW_STANDARD_NUM = parmExcelDto.getRowStandardNum();
+		final int CELL_STANDARD_NUM = parmExcelDto.getCellStandardNum();
 
 		List<ExcelDto> excelDtoList = null;
 
-		if (filename != null) {
+		if (parmExcelDto.getFilename() != null) {
 			excelDtoList = new ArrayList<>();
 
 			try {
-				FileInputStream file = new FileInputStream(path + filename);
+				FileInputStream file = new FileInputStream(parmExcelDto.getPath() + parmExcelDto.getFilename());
 				XSSFWorkbook workbook = new XSSFWorkbook(file);
 				NumberFormat f = NumberFormat.getInstance();
 				f.setGroupingUsed(false);  //지수로 안나오게 설정
@@ -43,17 +47,19 @@ public class ExcelUtility {
 				//시트 갯수
 				int sheetNum = workbook.getNumberOfSheets();
 
-				for (int s = 0; s < 1; s++) {
+				for (int s = SHEET_STANDARD_NUM; s < 1; s++) {
 					XSSFSheet sheet = workbook.getSheetAt(s);
 					//행 갯수
 					int rows = sheet.getPhysicalNumberOfRows();
-					for (int r = 0; r < rows; r++) {
+
+					for (int r = ROW_STANDARD_NUM; r < rows; r++) {
 						ExcelDto excelDto = new ExcelDto();
 						excelDto.setRows(r);
 						XSSFRow row = sheet.getRow(r);
 						int cells = row.getPhysicalNumberOfCells();
 						List<String> valueList = new ArrayList<>();
-						for (int c = 0; c < cells; c++) {
+
+						for (int c = CELL_STANDARD_NUM; c < cells; c++) {
 							XSSFCell cell = row.getCell(c);
 							String value = "";
 							if (cell != null) {
@@ -74,6 +80,7 @@ public class ExcelUtility {
 							}
 							valueList.add(value);
 						}
+
 						excelDto.setValueList(valueList);
 						excelDtoList.add(excelDto);
 					}
