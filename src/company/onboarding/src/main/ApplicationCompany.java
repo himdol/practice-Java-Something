@@ -12,8 +12,8 @@ public class ApplicationCompany {
 
 	public static void main(String[] args) throws IOException, ParserConfigurationException, TransformerException, SAXException {
 		OnBoarding on = new OnBoarding();
-		on.makeToExcelFileAndUpdate();
-		DAO dao = new DAO();
-		dao.getConnection();
+//		on.makeToExcelFileAndUpdate();
+//		DAO dao = new DAO();
+//		dao.getConnection();
 	}
 }
