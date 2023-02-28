@@ -51,10 +51,10 @@ public class ExcelUtility {
 					XSSFSheet sheet = workbook.getSheetAt(s);
 					//행 갯수
 					int rows = sheet.getPhysicalNumberOfRows();
-
+					int indexRow = 0;
 					for (int r = ROW_STANDARD_NUM; r < rows; r++) {
 						ExcelDto excelDto = new ExcelDto();
-						excelDto.setRows(r);
+						excelDto.setRows(indexRow);
 						XSSFRow row = sheet.getRow(r);
 						int cells = row.getPhysicalNumberOfCells();
 						List<String> valueList = new ArrayList<>();
@@ -83,6 +83,7 @@ public class ExcelUtility {
 
 						excelDto.setValueList(valueList);
 						excelDtoList.add(excelDto);
+						indexRow++;
 					}
 				}
 			} catch (FileNotFoundException e) {
