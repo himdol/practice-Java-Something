@@ -29,19 +29,19 @@ public class OnBoarding {
 
 		List<ExcelDto> excelDtoList = excelUtility.excelReader(excelDto);
 
-		this.printExcelListToValue(excelDtoList);
-//	TODO - 제목 seq 번호로 다른 ROW 의 셀까지 지워주기.
-		this.getCellWithTitleNumber(excelDtoList);
+		List<ExcelDto> result = this.removeWhenFirstDataIsFalseOfExcelDtoList(excelDtoList);
+		this.printExcelListToValue(result);
 
 		return 0;
 	}
+
 
 
 	private void printExcelListToValue(List<ExcelDto> excelDtoList) {
 		excelDtoList.stream().forEach(System.out :: println);
 	}
 
-	private void getCellWithTitleNumber(List<ExcelDto> excelDtoList) {
+	private List<ExcelDto> removeWhenFirstDataIsFalseOfExcelDtoList(List<ExcelDto> excelDtoList) {
 
 		String[] titleList = {
 						CommonConstant.ExcludeTitle.REGION ,
@@ -57,32 +57,51 @@ public class OnBoarding {
 						CommonConstant.ExcludeTitle.WS_EMAIL ,
 						CommonConstant.ExcludeTitle.WS_NAME ,
 						CommonConstant.ExcludeTitle.WS_PHONE,
-						CommonConstant.ExcludeTitle.WSR_NAME,
-						};
+						CommonConstant.ExcludeTitle.WSR_NAME
+		};
 
-		ArrayList<Integer> titleIndexes = new ArrayList<>();
-		List<ExcelDto> aa = excelDtoList.stream()
+		List<ExcelDto> firstRow = excelDtoList.stream()
 						.filter(e -> Integer.valueOf(0).equals(e.getRows()))
 						.collect(Collectors.toList());
-		List<String> aaa = aa.get(0).getValueList();
+		List<String> firstRowValueList = firstRow.get(0).getValueList();
 
 		int idx = 0;
-		for (String a : aaa) {
-			for (String b : titleList) {
-				if (a.equals(b)) {
+		ArrayList<Integer> titleIndexes = new ArrayList<>();
+
+		for (String valueList : firstRowValueList) {
+			for (String title : titleList) {
+				if (valueList.equals(title)) {
 					titleIndexes.add(Integer.valueOf(idx));
 				}
 			}
 			idx++;
 		}
 
+		idx = 0;
+		List<ExcelDto> afterMakeExcelDtoList = new ArrayList<>();
 
+		for (ExcelDto excelDto : excelDtoList) {
+			ExcelDto afterMakeExcelDto = new ExcelDto();
+			List<String> afterMakeValueList = new ArrayList<>();
+			afterMakeExcelDto.setRows(idx);
 
-		titleIndexes.forEach(System.out :: println);
-		System.out.println("titleIndexes::: " + titleIndexes.get(0));
+			for (int i = 0; i < excelDto.getValueList().size(); i++) {
+				for (Integer titleIdx : titleIndexes) {
+					if (Integer.valueOf(i).equals(titleIdx)) {
+						afterMakeValueList.add(excelDto.getValueList().get(i));
+					}
+				}
+			}
+			if(excelDto.getValueList().get(0).equals("false")){
+				System.out.print("ROWS NUMBER :: " + excelDto.getRows() + " -> ");
+				System.out.println(excelDto.getValueList().toString());
+			} else {
+				afterMakeExcelDto.setValueList(afterMakeValueList);
+				afterMakeExcelDtoList.add(afterMakeExcelDto);
+			}
+			idx++;
+		}
 
-
-
+		return afterMakeExcelDtoList;
 	}
-
 }
