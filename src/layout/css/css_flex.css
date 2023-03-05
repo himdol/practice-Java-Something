@@ -1,0 +1,11 @@
+.container {
+  border: 1px solid red;
+  display: flex;
+}
+
+.item {
+  border: 1px solid blue;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
