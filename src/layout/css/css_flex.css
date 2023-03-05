@@ -1,3 +1,14 @@
+/*
+ flex 는 반드시 상위 부모 요소인 flex container 이 필요하다.
+
+ flex 정렬시 참고
+ flex : block 개념 : 수직정렬
+ inline-flex : inline-block 개념 : 수평정렬
+
+
+
+*/
+
 .container {
   border: 1px solid red;
   display: flex;
