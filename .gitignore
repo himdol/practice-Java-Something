@@ -15,4 +15,7 @@
 # 예외
 #!제외할 파일명.txt
 /src/fullstack_part2
-/.idea/*
+/out/production/javasomething/company/dbConnection.xml
+/out/production/practice-Java-Something/company/dbConnection.xml
+/src/company/dbConnection.xml
+/.idea
