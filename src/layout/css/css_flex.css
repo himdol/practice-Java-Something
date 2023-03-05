@@ -5,13 +5,27 @@
  flex : block 개념 : 수직정렬
  inline-flex : inline-block 개념 : 수평정렬
 
+ flex-direction -> container에서 사용
 
+ 내부 아이템에서 가운데, 가운데 정렬
+ text-align: center; (수평)
+ line-height : height 에서 설정한 높이값을 동일하게 써줌
 
+ flex-wrap
+ flex item 들을 1행 또는 복수의 행으로 비치하는 설정
+
+## 정렬
+  justify-content
+  주 축 기반 수평 정렬 방법
+  align-items && align-content
+  교차 축 기반 정렬방법을 설정한다.
 */
 
 .container {
   border: 1px solid red;
   display: flex;
+  justify-content: space-between;
+
 }
 
 .item {
