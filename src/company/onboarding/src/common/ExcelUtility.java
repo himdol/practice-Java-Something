@@ -44,9 +44,6 @@ public class ExcelUtility {
 				NumberFormat f = NumberFormat.getInstance();
 				f.setGroupingUsed(false);  //지수로 안나오게 설정
 
-				//시트 갯수
-				int sheetNum = workbook.getNumberOfSheets();
-
 				for (int s = SHEET_STANDARD_NUM; s < 1; s++) {
 					XSSFSheet sheet = workbook.getSheetAt(s);
 					//행 갯수
@@ -77,8 +74,8 @@ public class ExcelUtility {
 										break;
 								}
 							}
+							this.valueInsertInDto(c, value, excelDto);
 						}
-
 						excelDtoList.add(excelDto);
 						indexRow++;
 					}
@@ -91,5 +88,11 @@ public class ExcelUtility {
 		}
 
 		return excelDtoList;
+	}
+
+	private void valueInsertInDto(int cellRow, String value, ExcelDto excelDto) {
+
+
+
 	}
 }
