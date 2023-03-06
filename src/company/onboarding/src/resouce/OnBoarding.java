@@ -3,6 +3,7 @@ package company.onboarding.src.resouce;
 import company.onboarding.src.CommonConstant;
 import company.onboarding.src.common.ExcelUtility;
 import company.onboarding.src.dto.excel.ExcelDto;
+import company.onboarding.src.entity.onboarding.OnboardingEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,34 @@ public class OnBoarding {
 		List<ExcelDto> excelDtoList = excelUtility.excelReader(excelDto);
 
 		List<ExcelDto> result = this.removeWhenFirstDataIsFalseOfExcelDtoList(excelDtoList);
-		this.printExcelListToValue(result);
+//		this.printExcelListToValue(result);
+
+		//setting
+		List<OnboardingEntity> onboardingEntityList = new ArrayList<>();
+		for (ExcelDto resultExcelDto : result) {
+			System.out.println(resultExcelDto.getValueList().size());
+			OnboardingEntity onboardingEntity = OnboardingEntity.builder()
+							.region()
+							.typeLrpc(resultExcelDto.getValueList().get(1))
+							.directStore(resultExcelDto.getValueList().get(2))
+							.wsCode(resultExcelDto.getValueList().get(3))
+							.branch(resultExcelDto.getValueList().get(4))
+							.wsr(resultExcelDto.getValueList().get(5))
+							.companyName(resultExcelDto.getValueList().get(6))
+							.wsType(resultExcelDto.getValueList().get(7))
+							.kwam(resultExcelDto.getValueList().get(8))
+							.status(resultExcelDto.getValueList().get(9))
+							.wsEmail(resultExcelDto.getValueList().get(10))
+							.wsName(resultExcelDto.getValueList().get(11))
+							.wsPhone(resultExcelDto.getValueList().get(12))
+							.wsrName(resultExcelDto.getValueList().get(13))
+							.wsrPhone(resultExcelDto.getValueList().get(14))
+							.build();
+			onboardingEntityList.add(onboardingEntity);
+		}
+
+		onboardingEntityList.stream().forEach(System.out::println);
+
 
 		return 0;
 	}
@@ -57,7 +85,8 @@ public class OnBoarding {
 						CommonConstant.ExcludeTitle.WS_EMAIL ,
 						CommonConstant.ExcludeTitle.WS_NAME ,
 						CommonConstant.ExcludeTitle.WS_PHONE,
-						CommonConstant.ExcludeTitle.WSR_NAME
+						CommonConstant.ExcludeTitle.WSR_NAME,
+						CommonConstant.ExcludeTitle.WSR_PHONE,
 		};
 
 		List<ExcelDto> firstRow = excelDtoList.stream()
@@ -93,8 +122,8 @@ public class OnBoarding {
 				}
 			}
 			if(excelDto.getValueList().get(0).equals("false")){
-				System.out.print("ROWS NUMBER :: " + excelDto.getRows() + " -> ");
-				System.out.println(excelDto.getValueList().toString());
+//				System.out.print("ROWS NUMBER :: " + excelDto.getRows() + " -> ");
+//				System.out.println(excelDto.getValueList().toString());
 			} else {
 				afterMakeExcelDto.setValueList(afterMakeValueList);
 				afterMakeExcelDtoList.add(afterMakeExcelDto);

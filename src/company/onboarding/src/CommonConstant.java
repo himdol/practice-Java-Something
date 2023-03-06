@@ -23,6 +23,7 @@ public final class CommonConstant {
 		public final static String WS_PHONE = "주문자 핸드폰 번호";
 //		public final static String STATUS = "이메일(ID로 사용예정)";
 		public final static String WSR_NAME = "채권담당(경리) 성함";
+		public final static String WSR_PHONE = "주문자 핸드폰 번호1";
 //		public final static String STATUS = "주문자 핸드폰 번호";
 
 	}

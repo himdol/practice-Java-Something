@@ -13,6 +13,7 @@ public class ExcelDto {
 	private int rowStandardNum;
 	private int cellStandardNum;
 	private int rows;
-	private List<String> valueList;
+
+
 
 }
