@@ -57,7 +57,6 @@ public class ExcelUtility {
 						excelDto.setRows(indexRow);
 						XSSFRow row = sheet.getRow(r);
 						int cells = row.getPhysicalNumberOfCells();
-						List<String> valueList = new ArrayList<>();
 
 						for (int c = CELL_STANDARD_NUM; c < cells; c++) {
 							XSSFCell cell = row.getCell(c);
@@ -78,10 +77,8 @@ public class ExcelUtility {
 										break;
 								}
 							}
-							valueList.add(value);
 						}
 
-						excelDto.setValueList(valueList);
 						excelDtoList.add(excelDto);
 						indexRow++;
 					}

@@ -21,6 +21,7 @@ public class OnBoarding {
 		ExcelUtility excelUtility = new ExcelUtility();
 		String path = "C:/Users/이힘찬/Downloads/";
 
+
 		ExcelDto excelDto = new ExcelDto();
 		excelDto.setPath(path);
 		excelDto.setFilename(this.getFilename(path));
@@ -29,35 +30,36 @@ public class OnBoarding {
 		excelDto.setCellStandardNum(2);
 
 		List<ExcelDto> excelDtoList = excelUtility.excelReader(excelDto);
+		this.printExcelListToValue(excelDtoList);
 
-		List<ExcelDto> result = this.removeWhenFirstDataIsFalseOfExcelDtoList(excelDtoList);
+//		List<ExcelDto> result = this.removeWhenFirstDataIsFalseOfExcelDtoList(excelDtoList);
 //		this.printExcelListToValue(result);
 
 		//setting
-		List<OnboardingEntity> onboardingEntityList = new ArrayList<>();
-		for (ExcelDto resultExcelDto : result) {
-			System.out.println(resultExcelDto.getValueList().size());
-			OnboardingEntity onboardingEntity = OnboardingEntity.builder()
-							.region()
-							.typeLrpc(resultExcelDto.getValueList().get(1))
-							.directStore(resultExcelDto.getValueList().get(2))
-							.wsCode(resultExcelDto.getValueList().get(3))
-							.branch(resultExcelDto.getValueList().get(4))
-							.wsr(resultExcelDto.getValueList().get(5))
-							.companyName(resultExcelDto.getValueList().get(6))
-							.wsType(resultExcelDto.getValueList().get(7))
-							.kwam(resultExcelDto.getValueList().get(8))
-							.status(resultExcelDto.getValueList().get(9))
-							.wsEmail(resultExcelDto.getValueList().get(10))
-							.wsName(resultExcelDto.getValueList().get(11))
-							.wsPhone(resultExcelDto.getValueList().get(12))
-							.wsrName(resultExcelDto.getValueList().get(13))
-							.wsrPhone(resultExcelDto.getValueList().get(14))
-							.build();
-			onboardingEntityList.add(onboardingEntity);
-		}
+//		List<OnboardingEntity> onboardingEntityList = new ArrayList<>();
+//		for (ExcelDto resultExcelDto : result) {
+//			System.out.println(resultExcelDto.getValueList().size());
+//			OnboardingEntity onboardingEntity = OnboardingEntity.builder()
+//							.region()
+//							.typeLrpc(resultExcelDto.getValueList().get(1))
+//							.directStore(resultExcelDto.getValueList().get(2))
+//							.wsCode(resultExcelDto.getValueList().get(3))
+//							.branch(resultExcelDto.getValueList().get(4))
+//							.wsr(resultExcelDto.getValueList().get(5))
+//							.companyName(resultExcelDto.getValueList().get(6))
+//							.wsType(resultExcelDto.getValueList().get(7))
+//							.kwam(resultExcelDto.getValueList().get(8))
+//							.status(resultExcelDto.getValueList().get(9))
+//							.wsEmail(resultExcelDto.getValueList().get(10))
+//							.wsName(resultExcelDto.getValueList().get(11))
+//							.wsPhone(resultExcelDto.getValueList().get(12))
+//							.wsrName(resultExcelDto.getValueList().get(13))
+//							.wsrPhone(resultExcelDto.getValueList().get(14))
+//							.build();
+//			onboardingEntityList.add(onboardingEntity);
+//		}
 
-		onboardingEntityList.stream().forEach(System.out::println);
+//		onboardingEntityList.stream().forEach(System.out::println);
 
 
 		return 0;
@@ -69,68 +71,68 @@ public class OnBoarding {
 		excelDtoList.stream().forEach(System.out :: println);
 	}
 
-	private List<ExcelDto> removeWhenFirstDataIsFalseOfExcelDtoList(List<ExcelDto> excelDtoList) {
-
-		String[] titleList = {
-						CommonConstant.ExcludeTitle.REGION ,
-						CommonConstant.ExcludeTitle.TYPE_L_RPC ,
-						CommonConstant.ExcludeTitle.DIRECT_STORE ,
-						CommonConstant.ExcludeTitle.WS_CODE ,
-						CommonConstant.ExcludeTitle.BRANCH ,
-						CommonConstant.ExcludeTitle.WSR ,
-						CommonConstant.ExcludeTitle.COMPANY_NAME ,
-						CommonConstant.ExcludeTitle.WS_TYPE ,
-						CommonConstant.ExcludeTitle.KWAM ,
-						CommonConstant.ExcludeTitle.STATUS ,
-						CommonConstant.ExcludeTitle.WS_EMAIL ,
-						CommonConstant.ExcludeTitle.WS_NAME ,
-						CommonConstant.ExcludeTitle.WS_PHONE,
-						CommonConstant.ExcludeTitle.WSR_NAME,
-						CommonConstant.ExcludeTitle.WSR_PHONE,
-		};
-
-		List<ExcelDto> firstRow = excelDtoList.stream()
-						.filter(e -> Integer.valueOf(0).equals(e.getRows()))
-						.collect(Collectors.toList());
-		List<String> firstRowValueList = firstRow.get(0).getValueList();
-
-		int idx = 0;
-		ArrayList<Integer> titleIndexes = new ArrayList<>();
-
-		for (String valueList : firstRowValueList) {
-			for (String title : titleList) {
-				if (valueList.equals(title)) {
-					titleIndexes.add(Integer.valueOf(idx));
-				}
-			}
-			idx++;
-		}
-
-		idx = 0;
-		List<ExcelDto> afterMakeExcelDtoList = new ArrayList<>();
-
-		for (ExcelDto excelDto : excelDtoList) {
-			ExcelDto afterMakeExcelDto = new ExcelDto();
-			List<String> afterMakeValueList = new ArrayList<>();
-			afterMakeExcelDto.setRows(idx);
-
-			for (int i = 0; i < excelDto.getValueList().size(); i++) {
-				for (Integer titleIdx : titleIndexes) {
-					if (Integer.valueOf(i).equals(titleIdx)) {
-						afterMakeValueList.add(excelDto.getValueList().get(i));
-					}
-				}
-			}
-			if(excelDto.getValueList().get(0).equals("false")){
-//				System.out.print("ROWS NUMBER :: " + excelDto.getRows() + " -> ");
-//				System.out.println(excelDto.getValueList().toString());
-			} else {
-				afterMakeExcelDto.setValueList(afterMakeValueList);
-				afterMakeExcelDtoList.add(afterMakeExcelDto);
-			}
-			idx++;
-		}
-
-		return afterMakeExcelDtoList;
-	}
+//	private void removeWhenFirstDataIsFalseOfExcelDtoList(List<ExcelDto> excelDtoList) {
+//
+//		String[] titleList = {
+//						CommonConstant.ExcludeTitle.REGION ,
+//						CommonConstant.ExcludeTitle.TYPE_L_RPC ,
+//						CommonConstant.ExcludeTitle.DIRECT_STORE ,
+//						CommonConstant.ExcludeTitle.WS_CODE ,
+//						CommonConstant.ExcludeTitle.BRANCH ,
+//						CommonConstant.ExcludeTitle.WSR ,
+//						CommonConstant.ExcludeTitle.COMPANY_NAME ,
+//						CommonConstant.ExcludeTitle.WS_TYPE ,
+//						CommonConstant.ExcludeTitle.KWAM ,
+//						CommonConstant.ExcludeTitle.STATUS ,
+//						CommonConstant.ExcludeTitle.WS_EMAIL ,
+//						CommonConstant.ExcludeTitle.WS_NAME ,
+//						CommonConstant.ExcludeTitle.WS_PHONE,
+//						CommonConstant.ExcludeTitle.WSR_NAME,
+//						CommonConstant.ExcludeTitle.WSR_PHONE,
+//		};
+//
+//		List<ExcelDto> firstRow = excelDtoList.stream()
+//						.filter(e -> Integer.valueOf(0).equals(e.getRows()))
+//						.collect(Collectors.toList());
+//		List<String> firstRowValueList = firstRow.get(0).getValueList();
+//
+//		int idx = 0;
+//		ArrayList<Integer> titleIndexes = new ArrayList<>();
+//
+//		for (String valueList : firstRowValueList) {
+//			for (String title : titleList) {
+//				if (valueList.equals(title)) {
+//					titleIndexes.add(Integer.valueOf(idx));
+//				}
+//			}
+//			idx++;
+//		}
+//
+//		idx = 0;
+//		List<ExcelDto> afterMakeExcelDtoList = new ArrayList<>();
+//
+//		for (ExcelDto excelDto : excelDtoList) {
+//			ExcelDto afterMakeExcelDto = new ExcelDto();
+//			List<String> afterMakeValueList = new ArrayList<>();
+//			afterMakeExcelDto.setRows(idx);
+//
+//			for (int i = 0; i < excelDto.getValueList().size(); i++) {
+//				for (Integer titleIdx : titleIndexes) {
+//					if (Integer.valueOf(i).equals(titleIdx)) {
+//						afterMakeValueList.add(excelDto.getValueList().get(i));
+//					}
+//				}
+//			}
+//			if(excelDto.getValueList().get(0).equals("false")){
+////				System.out.print("ROWS NUMBER :: " + excelDto.getRows() + " -> ");
+////				System.out.println(excelDto.getValueList().toString());
+//			} else {
+//				afterMakeExcelDto.setValueList(afterMakeValueList);
+//				afterMakeExcelDtoList.add(afterMakeExcelDto);
+//			}
+//			idx++;
+//		}
+//
+//		return afterMakeExcelDtoList;
+//	}
 }
