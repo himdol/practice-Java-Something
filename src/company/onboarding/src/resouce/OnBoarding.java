@@ -31,7 +31,9 @@ public class OnBoarding {
 //		ExcelUtility.printExcelListToValue(excelDtoList);
 		List<OnboardingDto> onboardingDtoList = this.makeOnboardingDtoList(excelDtoList);
 		this.printOnboradingList(onboardingDtoList);
+		System.out.println(onboardingDtoList.size());
 
+		// wsCode, companyName, directStore, lRpcType
 
 		return 0;
 	}
@@ -49,10 +51,10 @@ public class OnBoarding {
 
 		for (int i = 0; i < title.size(); i++) {
 			if (CommonConstant.ExcludeTitle.REGION.equals(title.get(i))) {
-				onbDtoTitleIndex.setRegion(title.get(i));
+				onbDtoTitleIndex.setRegion(title.get(i).trim());
 				onbDtoTitleIndex.setRegionIndex(i);
 			} else if (CommonConstant.ExcludeTitle.TYPE_L_RPC.equals(title.get(i))) {
-				onbDtoTitleIndex.setLRpcType(title.get(i));
+				onbDtoTitleIndex.setLRpcType(title.get(i).trim());
 				onbDtoTitleIndex.setLRpcTypeIndex(i);
 			} else if (CommonConstant.ExcludeTitle.DIRECT_STORE.equals(title.get(i))) {
 				onbDtoTitleIndex.setDirectStore(title.get(i));
