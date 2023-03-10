@@ -14,21 +14,6 @@ public class ExcelDto {
 	private int cellStandardNum;
 	private int rows;
 
-	private String region;
-	private String lRpcType;
-	private String directStore;
-	private String wsCode;
-	private String branch;
-	private String wsr;
-	private String companyName;
-	private String wsType;
-	private String kwan;
-	private String status;
-	private String wsEmail;
-	private String wsName;
-	private String wsPhone;
-	private String wsrName;
-	private String wsrPhone;
-
+	private List<String> valueList;
 
 }

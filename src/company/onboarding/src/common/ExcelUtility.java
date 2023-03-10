@@ -48,12 +48,15 @@ public class ExcelUtility {
 					XSSFSheet sheet = workbook.getSheetAt(s);
 					//행 갯수
 					int rows = sheet.getPhysicalNumberOfRows();
+
 					int indexRow = 0;
 					for (int r = ROW_STANDARD_NUM; r < rows; r++) {
 						ExcelDto excelDto = new ExcelDto();
+						excelDto.setRows(r);
 						excelDto.setRows(indexRow);
 						XSSFRow row = sheet.getRow(r);
 						int cells = row.getPhysicalNumberOfCells();
+						List<String> valueList = new ArrayList<>();
 
 						for (int c = CELL_STANDARD_NUM; c < cells; c++) {
 							XSSFCell cell = row.getCell(c);
@@ -74,8 +77,10 @@ public class ExcelUtility {
 										break;
 								}
 							}
-							this.valueInsertInDto(c, value, excelDto);
+							valueList.add(value);
 						}
+
+						excelDto.setValueList(valueList);
 						excelDtoList.add(excelDto);
 						indexRow++;
 					}
@@ -90,9 +95,4 @@ public class ExcelUtility {
 		return excelDtoList;
 	}
 
-	private void valueInsertInDto(int cellRow, String value, ExcelDto excelDto) {
-
-
-
-	}
 }
