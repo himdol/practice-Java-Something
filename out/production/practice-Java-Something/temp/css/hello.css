@@ -1,0 +1,22 @@
+.hidden {
+  display: none;
+}
+
+* {
+  magin: 0;
+  padding: 0;
+  border: none;
+  color: red;
+}
+
+.dave { color :green;}
+a:link{
+  color:blue;
+}
+a:active {
+  color:aquamarine;
+}
+
+/*content 와 선 내부끼리 사이는 padding*/
+/*content 와 선 외부끼리 사이는 padding*/
+
