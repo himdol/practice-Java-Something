@@ -55,9 +55,8 @@ public class ExcelUtility {
 						excelDto.setRows(r);
 						excelDto.setRows(indexRow);
 						XSSFRow row = sheet.getRow(r);
-						int cells = row.getPhysicalNumberOfCells();
+						int cells = row.getLastCellNum();
 						List<String> valueList = new ArrayList<>();
-
 						for (int c = CELL_STANDARD_NUM; c < cells; c++) {
 							XSSFCell cell = row.getCell(c);
 							String value = "";
@@ -93,6 +92,15 @@ public class ExcelUtility {
 		}
 
 		return excelDtoList;
+	}
+
+	/**
+	 * List를 console에 Print 해주는 Method
+	 *
+	 * @param excelDtoList
+	 */
+	public static void printExcelListToValue(List<ExcelDto> excelDtoList) {
+		excelDtoList.stream().forEach(System.out::println);
 	}
 
 }
