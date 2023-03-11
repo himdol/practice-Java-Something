@@ -13,6 +13,7 @@ body {
   height: 100%;
   margin: 0 auto;
   padding: 0 2rem;
+  overflow: hidden;
 }
 
 header {
@@ -121,6 +122,7 @@ section {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 1rem 0;
 }
 
 .skill {
@@ -193,6 +195,70 @@ section {
 
 }
 
+.class-list {
+  display: flex;
+  list-style: none;
+  padding: 1rem 0;
+  overflow: hidden;
+}
+
+.class-card {
+  width: 240px;
+  box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
+  border-radius: 8px;
+  margin: 0 10px;
+}
+
+.class-img {
+  width: 240px;
+  border-radius: 8px 8px 0 0;
+  height: 150px;
+}
+
+.class-container {
+  width: 100%;
+  padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.class-skill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.class-type {
+  font-size: 0.9rem;
+  color: #949393;
+}
+
+.class-format {
+  font-size: 0.9rem;
+  color:#fff;
+  background: #2186c4;
+  padding: 0.2rem;
+  border-radius: 3px;
+}
+
+.class-desc {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.class-title {
+  font-weight: bold;
+  color: #545e6f;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.5rem;
+}
+
+.class-detail {
+  font-size: 0.9rem;
+  color: #545e6f;
+}
+
 @media only screen and (min-width: 1200px) {
   .inner {
     max-width: 1200px;
@@ -202,5 +268,12 @@ section {
 @media only screen and (max-width: 980px) {
   .skill-container {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .arrows {
+    width: 25px;
+    height: 25px;
   }
 }
