@@ -208,11 +208,12 @@ section {
 }
 
 .class-card {
-  width: 240px;
+  max-width: 240px;
   box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
   border-radius: 8px;
   margin: 0 10px;
   transition: 0.4s;
+  flex-shrink: 0;
 }
 
 .class-card:hover {
@@ -222,9 +223,8 @@ section {
 }
 
 .class-img {
-  width: 240px;
+  max-width: 240px;
   border-radius: 8px 8px 0 0;
-  height: 150px;
 }
 
 .class-container {
@@ -282,6 +282,29 @@ section {
   .inner {
     max-width: 1200px;
   }
+}
+
+footer {
+  border-top: 1px solid #e4e4e4;
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  margin: 1rem 0;
+}
+
+.footer-message {
+  font-weight: bold;
+  color: #545e6f;
+  margin: 0.4rem 0.5rem;
+}
+
+.footer-contact {
+  color: #545e6f;
+  margin: 0.5rem 0.4rem;
+}
+
+.footer-copyright {
+  color: #545e6f;
+  margin: 1rem 0.5rem;
 }
 
 @media only screen and (max-width: 980px) {
