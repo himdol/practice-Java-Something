@@ -15,6 +15,15 @@ import java.util.List;
 
 public class ExcelUtility {
 
+	/**
+	 * 엑셀이랑 연관관계가 없어서 파일 Utills로 분기를 친다.
+	 *
+	 *
+	 * @param containString
+	 * @param path
+	 * @return
+	 */
+
 	public String getDirListFindByWord(String containString, String path){
 		File file = new File(path);
 		String[] listName = file.list();
